@@ -4,13 +4,7 @@ namespace GenerateOTPApi.Service
 {
     public class OtpService
     {
-        private readonly IConfiguration _configuration;
         private static Dictionary<string, (string Otp, DateTime Timestamp)> otpStore = new Dictionary<string, (string, DateTime)>();
-
-        public OtpService(IConfiguration configuration)
-        {
-            _configuration = configuration;;
-        }
 
         public string GenerateOtp(string userId)
         {

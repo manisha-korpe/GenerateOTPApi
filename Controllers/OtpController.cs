@@ -15,14 +15,14 @@ namespace GenerateOTPApi.Controllers
             _otpService = otpService;
         }
 
-        [HttpPost("generate")]
+        [HttpPost("Generate")]
         public IActionResult GenerateOtp([FromBody] string userId)
         {
             var otp = _otpService.GenerateOtp(userId);
             return Ok(otp);
         }
 
-        [HttpPost("validate")]
+        [HttpPost("Validate")]
         public IActionResult ValidateOtp([FromBody] OtpValidationRequest request)
         {
             var isValid = _otpService.ValidateOtp(request.userId, request.UserOtp);
@@ -31,8 +31,8 @@ namespace GenerateOTPApi.Controllers
             {
                 return Ok(new { message = "OTP is valid" });
             }
+
             return BadRequest(new { message = "Invalid OTP" });
         }
-
     }
 }
